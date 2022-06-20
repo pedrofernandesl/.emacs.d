@@ -9,6 +9,17 @@
 
 (package-initialize)
 
+;; declare packages
+(setq packages-to-be-installed 
+      '(evil
+        evil-collection
+        magit))
+
+;; iterate on packages and install missing ones
+(dolist (pkg packages-to-be-installed)
+ (unless (package-installed-p pkg)
+  (package-install pkg)))
+
 ;; stop creating backup~ files
 (setq make-backup-files nil)
 
